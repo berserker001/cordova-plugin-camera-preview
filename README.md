@@ -3,10 +3,6 @@ cordova-plugin-camera-preview
 
 Cordova plugin that allows camera interaction from HTML code for showing camera preview below or above the HTML.<br/>
 
-**June 13, 2016 - I dont have any time to work on this recently. If people want to contribute lets get a good working version over here [westonganger/cordova-plugin-camera-preview](https://github.com/westonganger/cordova-plugin-camera-preview/tree/skanygin) with some additional features and nicer API that would be great. Then we can get it merged back to master on this repo.**
-
-**May 18, 2016 - Current development to get a decent stable updated version is happening on the fork [westonganger/cordova-plugin-camera-preview](https://github.com/westonganger/cordova-plugin-camera-preview/tree/skanygin). This will be merged into master here once its working. Please direct all pull requests over there until further notice.**
-
 <p><b>Features:</b></p>
 <ul>
   <li>Start a camera preview from HTML code.</li>
@@ -22,26 +18,37 @@ Cordova plugin that allows camera interaction from HTML code for showing camera 
 <p><b>Installation:</b></p>
 
 ```
-cordova plugin add https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview.git
-```
-
-<b>Phonegap Build:</b><br/>
-
-```
-<gap:plugin name="cordova-plugin-camera-preview" />
+cordova plugin add https://github.com/berserker001/cordova-plugin-camera-preview.git
 ```
 
 <p><b>Methods:</b></p>
-
 
   <b>startCamera(rect, defaultCamera, tapEnabled, dragEnabled, toBack)</b><br/>
   <info>
   	Starts the camera preview instance.
   	<br/>
 	<br/>
-	When setting the toBack to TRUE, remember to add the style bellow on your app's HTML body element:
+	When setting the toBack to TRUE, remember to add the following style.
 ```
-style="background-color='transparent'"
+body,
+.camera-previewer-open .pane
+{
+    background-color:transparent !important;
+}
+```
+<b>Important !! You need to try this way.</b>
+<br>
+<br>
+<b>When setting the toBack to TRUE.</b>
+<br/>
+<br/>
+<b>Maybe still can not see the camera-previewer after called startCamera(...).</b>
+<br/>
+<br/>
+<b>You need to force Re-Render current HTML DOM.</b>
+
+```
+document.body.style.opacity = 0.99;
 ```
 </info>
 

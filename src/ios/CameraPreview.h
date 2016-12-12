@@ -7,6 +7,7 @@
 
 @interface CameraPreview : CDVPlugin <TakePictureDelegate>
 
+- (void) setSquareMode:(CDVInvokedUrlCommand*)command;
 - (void) startCamera:(CDVInvokedUrlCommand*)command;
 - (void) stopCamera:(CDVInvokedUrlCommand*)command;
 - (void) showCamera:(CDVInvokedUrlCommand*)command;
@@ -22,5 +23,6 @@
 @property (nonatomic) CameraSessionManager *sessionManager;
 @property (nonatomic) CameraRenderController *cameraRenderController;
 @property (nonatomic) NSString *onPictureTakenHandlerId;
+@property (nonatomic) BOOL enabledSquareMode;
 
 @end

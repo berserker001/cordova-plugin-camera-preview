@@ -26,6 +26,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
     private final String TAG = "CameraPreview";
     private final String setOnPictureTakenHandlerAction = "setOnPictureTakenHandler";
     private final String setColorEffectAction = "setColorEffect";
+    private final String setSquareModeAction = "setSquareMode";
     private final String startCameraAction = "startCamera";
     private final String stopCameraAction = "stopCamera";
     private final String switchCameraAction = "switchCamera";
@@ -57,6 +58,9 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 
         if (setOnPictureTakenHandlerAction.equals(action)){
             return setOnPictureTakenHandler(args, callbackContext);
+        }
+        else if (setSquareModeAction.equals(action)){
+            return setSquareMode(args, callbackContext);
         }
         else if (startCameraAction.equals(action)){
             return callStartCamera(args, callbackContext);
@@ -130,6 +134,13 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
         }
 
         return false;
+    }
+
+    public boolean setSquareMode(final JSONArray args, CallbackContext callbackContext){
+
+        fragment.enabledSquareMode = args.getBoolean(0);
+
+        return true;
     }
 
     private boolean startCamera(final JSONArray args, CallbackContext callbackContext) {
