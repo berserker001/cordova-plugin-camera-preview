@@ -138,7 +138,12 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 
     public boolean setSquareMode(final JSONArray args, CallbackContext callbackContext){
 
-        fragment.enabledSquareMode = args.getBoolean(0);
+        try{
+            fragment.enabledSquareMode = args.getBoolean(0);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
 
         return true;
     }

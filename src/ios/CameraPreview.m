@@ -155,6 +155,11 @@
     self.onPictureTakenHandlerId = command.callbackId;
 }
 
+-(void) setOnCameraStaredHandler:(CDVInvokedUrlCommand*)command {
+    NSLog(@"setOnCameraStaredHandler");
+    self.onCameraStartedHandlerId = command.callbackId;
+}
+
 -(void) setColorEffect:(CDVInvokedUrlCommand*)command {
     NSLog(@"setColorEffect");
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];

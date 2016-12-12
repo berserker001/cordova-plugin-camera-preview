@@ -15,6 +15,7 @@
 - (void) switchCamera:(CDVInvokedUrlCommand*)command;
 - (void) takePicture:(CDVInvokedUrlCommand*)command;
 - (void) setOnPictureTakenHandler:(CDVInvokedUrlCommand*)command;
+- (void) setOnCameraStaredHandler:(CDVInvokedUrlCommand*)command;
 - (void) setColorEffect:(CDVInvokedUrlCommand*)command;
 
 - (void) invokeTakePicture:(CGFloat) maxWidth withHeight:(CGFloat) maxHeight;
@@ -23,6 +24,7 @@
 @property (nonatomic) CameraSessionManager *sessionManager;
 @property (nonatomic) CameraRenderController *cameraRenderController;
 @property (nonatomic) NSString *onPictureTakenHandlerId;
+@property (nonatomic) NSString *onCameraStartedHandlerId;
 @property (nonatomic) BOOL enabledSquareMode;
 
 @end
