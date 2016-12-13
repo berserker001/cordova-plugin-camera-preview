@@ -26,8 +26,8 @@ CameraPreview.startCamera = function (rect, defaultCamera, tapEnabled, dragEnabl
     exec(null, null, PLUGIN_NAME, "startCamera", [rect.x, rect.y, rect.width, rect.height, defaultCamera, !!tapEnabled, !!dragEnabled, !!toBack, alpha]);
 };
 
-CameraPreview.startCamera2 = function (rect, defaultCamera,fn_callback) {
-    exec(fn_callback, fn_callback, PLUGIN_NAME, "startCamera", [rect.x, rect.y, rect.width, rect.height, defaultCamera, false, false, true, 1]);
+CameraPreview.startCamera2 = function (rect, defaultCamera, fn_success, fn_error) {
+    exec(fn_success, fn_error, PLUGIN_NAME, "startCamera", [rect.x, rect.y, rect.width, rect.height, defaultCamera, false, false, true, 1]);
 };
 
 CameraPreview.stopCamera = function () {

@@ -399,12 +399,16 @@ public class CameraActivity extends Fragment {
 
 											_offset = (_width - _height) / 2;
 
+											_width = _height;
+
 											_x = _offset;
 
 										}
 										else if(_height > _width){
 
 											_offset = (_height - _width) / 2;
+
+											_height = _width;
 
 											_y = _offset;
 
