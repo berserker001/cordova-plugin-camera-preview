@@ -15,6 +15,17 @@ CameraPreview.setOnCameraStaredHandler = function (onCameraStarted) {
     exec(onCameraStarted, onCameraStarted, PLUGIN_NAME, "setOnCameraStaredHandler", []);
 };
 
+/**
+ * @param int flash mode
+ * 0 -> OFF
+ * 1 -> ON
+ * 2 -> TORCH
+ * 3 -> AUTO
+ */
+CameraPreview.setFlashMode = function(mode) {
+    exec(null, null, PLUGIN_NAME, "setFlashMode", [mode]);
+}
+
 CameraPreview.setOnPictureTakenHandler = function (onPictureTaken) {
     exec(onPictureTaken, onPictureTaken, PLUGIN_NAME, "setOnPictureTakenHandler", []);
 };

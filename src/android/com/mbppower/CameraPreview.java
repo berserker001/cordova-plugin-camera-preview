@@ -33,6 +33,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
     private final String takePictureAction = "takePicture";
     private final String showCameraAction = "showCamera";
     private final String hideCameraAction = "hideCamera";
+    private final String setFlashModeAction = "setFlashMode";
 
     public static final int START_CAMERA_SEC = 0;
     public static final int PERMISSION_DENIED_ERROR = 20;
@@ -67,6 +68,9 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
         }
         else if (takePictureAction.equals(action)){
             return takePicture(args, callbackContext);
+        }
+        else if (setFlashModeAction.equals(action)) {
+        	 return setFlashMode(args, callbackContext);
         }
         else if (setColorEffectAction.equals(action)){
           return setColorEffect(args, callbackContext);
@@ -277,6 +281,49 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
       return false;
     }
     }
+
+    private boolean setFlashMode(final JSONArray args, CallbackContext callbackContext) {
+    	  if (fragment == null) {
+    	    return false;
+    	  }
+
+        Camera camera = fragment.getCamera();
+        if (camera == null) {
+          return false;
+        }
+
+    	  Camera.Parameters params = camera.getParameters();
+
+    	  try {
+    	  	int mode = (int) args.getInt(0);
+
+    	  	switch(mode) {
+    	  		case 0:
+    	  			params.setFlashMode(params.FLASH_MODE_OFF);
+    	  			break;
+
+    	  		case 1:
+    	  			params.setFlashMode(params.FLASH_MODE_ON);
+    	  			break;
+
+    	  		case 2:
+    	  			params.setFlashMode(params.FLASH_MODE_TORCH);
+    	  		break;
+
+    	  		case 3:
+    	  			params.setFlashMode(params.FLASH_MODE_AUTO);
+    	  		break;
+    	  	}
+
+    	  	fragment.setCameraParameters(params);
+
+    	  	return true;
+    	  } catch (Exception e) {
+    	  	e.printStackTrace();
+
+    	  	return false;
+    	  }
+    	}
 
     private boolean stopCamera(final JSONArray args, CallbackContext callbackContext) {
         if(fragment == null){
