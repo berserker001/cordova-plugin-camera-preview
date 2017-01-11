@@ -7,6 +7,10 @@ var PLUGIN_NAME = "CameraPreview";
 var CameraPreview = function () {
 };
 
+CameraPreview.forceRender = function (fn_success,fn_error) {
+    exec(fn_success, fn_error, PLUGIN_NAME, "forceRender", []);
+};
+
 CameraPreview.setSquareMode = function (isOn) {
     exec(null, null, PLUGIN_NAME, "setSquareMode", [isOn]);
 };
