@@ -7,12 +7,12 @@ var PLUGIN_NAME = "CameraPreview";
 var CameraPreview = function () {
 };
 
-CameraPreview.forceRender = function (fn_success,fn_error) {
+CameraPreview.forceRender = function (fn_success, fn_error) {
     exec(fn_success, fn_error, PLUGIN_NAME, "forceRender", []);
 };
 
-CameraPreview.setSquareMode = function (isOn) {
-    exec(null, null, PLUGIN_NAME, "setSquareMode", [isOn]);
+CameraPreview.setSquareMode = function (isOn, offset) {
+    exec(null, null, PLUGIN_NAME, "setSquareMode", [isOn, offset]);
 };
 
 CameraPreview.setOnCameraStaredHandler = function (onCameraStarted) {
@@ -26,7 +26,7 @@ CameraPreview.setOnCameraStaredHandler = function (onCameraStarted) {
  * 2 -> TORCH
  * 3 -> AUTO
  */
-CameraPreview.setFlashMode = function(mode) {
+CameraPreview.setFlashMode = function (mode) {
     exec(null, null, PLUGIN_NAME, "setFlashMode", [mode]);
 }
 

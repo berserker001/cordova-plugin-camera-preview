@@ -67,6 +67,7 @@ public class CameraActivity extends Fragment {
     public boolean dragEnabled;
 
     public boolean enabledSquareMode = false;
+    public int squareModeOffset = 0;
 
     public int width;
     public int height;
@@ -251,7 +252,7 @@ public class CameraActivity extends Fragment {
 
         Camera.Parameters parameters = mCamera.getParameters();
 
-        if(!this.lastFlashMode.isEmpty())
+        if (!this.lastFlashMode.isEmpty())
             parameters.setFlashMode(this.lastFlashMode);
 
         mCamera.setParameters(parameters);
@@ -432,13 +433,16 @@ public class CameraActivity extends Fragment {
 
                                     if (enabledSquareMode) {
 
+                                        int defaultOffset = 114 + (114 / 2);
+
                                         if (_width > _height) {
 
                                             _offset = (_width - _height) / 2;
 
                                             _width = _height;
 
-                                            _x = _offset;
+
+                                            _x = _offset + (squareModeOffset > 0 ? squareModeOffset : defaultOffset);
 
                                         } else if (_height > _width) {
 
@@ -446,7 +450,7 @@ public class CameraActivity extends Fragment {
 
                                             _height = _width;
 
-                                            _y = _offset;
+                                            _y = _offset - (squareModeOffset > 0 ? squareModeOffset : defaultOffset);
 
                                         }
 
