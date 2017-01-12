@@ -487,7 +487,7 @@ public class CameraActivity extends Fragment {
 
                 try {
                     //final File picFile = storeImage(picture, "_preview");
-                    final File originalPictureFile = storeImage(originalPicture, "_original");
+                    final File originalPictureFile = storeImage(originalPicture, "");
 
                     eventListener.onPictureTaken(originalPictureFile.getAbsolutePath(), "");
 
