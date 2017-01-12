@@ -313,6 +313,8 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
                     break;
             }
 
+            fragment.lastFlashMode = params.getFlashMode();
+
             fragment.setCameraParameters(params);
 
             return true;
@@ -404,6 +406,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
         if (fragment == null) {
             return false;
         }
+        fragment.lastFlashMode = "";
         fragment.switchCamera();
         return true;
     }

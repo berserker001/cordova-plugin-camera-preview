@@ -73,6 +73,8 @@ public class CameraActivity extends Fragment {
     public int x;
     public int y;
 
+    public String lastFlashMode = "";
+
     public void setEventListener(CameraPreviewListener listener) {
         eventListener = listener;
     }
@@ -247,9 +249,12 @@ public class CameraActivity extends Fragment {
     private void setCurrentCamera(int cameraId) {
         mCamera = Camera.open(cameraId);
 
-        if (cameraParameters != null) {
-            mCamera.setParameters(cameraParameters);
-        }
+        Camera.Parameters parameters = mCamera.getParameters();
+
+        if(!this.lastFlashMode.isEmpty())
+            parameters.setFlashMode(this.lastFlashMode);
+
+        mCamera.setParameters(parameters);
 
         cameraCurrentlyLocked = cameraId;
     }
@@ -324,8 +329,8 @@ public class CameraActivity extends Fragment {
 
         int nextCameraId = (cameraCurrentlyLocked) % numberOfCameras;
 
-        // Set the next camera as the current one and apply the cameraParameters
-        setCurrentCamera(nextCameraId);
+        mCamera = Camera.open(nextCameraId);
+        cameraCurrentlyLocked = nextCameraId;
 
         mPreview.switchCamera(mCamera, cameraCurrentlyLocked);
 
